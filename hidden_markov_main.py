@@ -1,7 +1,6 @@
 import numpy as np
 
 from clustering import KMeansClustering
-from driver import Driver
 from hidden_markov_model import HMM
 import random
 from config import *
