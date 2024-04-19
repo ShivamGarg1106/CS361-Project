@@ -95,3 +95,23 @@ class DecisionTree:
             return self._predict_tree(sample, tree['left'])
         else:
             return self._predict_tree(sample, tree['right'])
+        
+    def score(self, X, y):
+        # Calculate and return a performance metric based on the model's predictions and the true labels
+        predictions = self.predict(X)
+        # Here, you can use any suitable metric, such as accuracy_score, precision_score, etc.
+        # For example, if you want to use accuracy score:
+        from sklearn.metrics import accuracy_score
+        return accuracy_score(y, predictions)
+    
+    def get_params(self, deep=True):
+        return {
+            'max_depth': self.max_depth,
+            'min_samples_split': self.min_samples_split,
+            'min_samples_leaf': self.min_samples_leaf
+        }
+    
+    def set_params(self, **parameters):
+        for parameter, value in parameters.items():
+            setattr(self, parameter, value)
+        return self
